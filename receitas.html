@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Margutti Receitas - Receitas</title>
+      <link rel="stylesheet" href="stylsheet.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <script src="./receitas.js"></script>
+</head>
+
+<body>
+      <header class="header">
+            <div class="container">
+                  <div class="header-content">
+                        <a href="#" class="title">Margutti Receitas</a>
+
+                        <nav class="nav">
+                              <ul>
+                                    <li>
+                                          <a href="./index.html">Home</a>
+                                    </li>
+                                    <li>
+                                          <a href="./receitas.html">Receitas</a>
+                                    </li>
+                              </ul>
+                        </nav>
+                  </div>
+            </div>
+      </header>
+
+      <main>
+            <div class="container">
+                  <div class="main-content">
+                        <strong class="recipe-title">Todas as receitas</strong>
+
+                        <div class="recipe-grid" id="recipe-grid">
+
+                              <script>
+                                    const recipeGrid = document.getElementById('recipe-grid');
+                                    recipes.map(recipe => {
+                                          const recipeCard = document.createElement('a');
+                                          recipeCard.href = `receita.html?slug=${recipe.slug}`;
+                                          recipeCard.classList.add('recipe-content');
+
+                                          recipeCard.innerHTML = `
+                                                                                    <div class="recipe-image">
+                                                                                          <img src="${recipe.imagem}" alt="">
+                                                                                    </div>
+                                                                                    <div class="recipe-infos">
+                                                                                          <span>${recipe.titulo}</span>
+                                                                                          <p>${recipe.descricao}</p>
+                                                                                    </div>
+                                                                              `;
+
+                                          recipeGrid.appendChild(recipeCard);
+                                    });
+                              </script>
+                        </div>
+                  </div>
+            </div>
+      </main>
+</body>
+
+</html>

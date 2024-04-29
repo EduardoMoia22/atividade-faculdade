@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Meu Site de Receitas</title>
+</head>
+
+<body>
+      <h1>Receitas</h1>
+      <ul id="lista-receitas"></ul>
+
+      <script>
+            // Carregar o arquivo JSON com as receitas
+            fetch('./receitas.json')
+                  .then(response => response.json())
+                  .then(data => {
+                        const listaReceitas = document.getElementById('lista-receitas');
+
+                        // Iterar sobre cada receita no arquivo JSON
+                        data.forEach(receita => {
+                              // Criar um item de lista para cada receita
+                              const itemLista = document.createElement('li');
+                              const linkReceita = document.createElement('a');
+                              linkReceita.textContent = receita.titulo;
+                              linkReceita.href = `receita.html?slug=${receita.slug}`; // Adicionar slug na URL
+                              itemLista.appendChild(linkReceita);
+                              listaReceitas.appendChild(itemLista);
+                        });
+                  })
+                  .catch(error => console.error('Erro ao carregar as receitas:', error));
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Detalhes da Receita</title>
+      <link rel="stylesheet" href="stylsheet.css">
+      <script src="./receitas.js"></script>
+</head>
+
+<body>
+      <header class="header">
+            <div class="container">
+                  <div class="header-content">
+                        <a href="#" class="title">Margutti Receitas</a>
+
+                        <nav class="nav">
+                              <ul>
+                                    <li>
+                                          <a href="./index.html">Home</a>
+                                    </li>
+                                    <li>
+                                          <a href="./receitas.html">Receitas</a>
+                                    </li>
+                              </ul>
+                        </nav>
+                  </div>
+            </div>
+      </header>
+
+      <main>
+            <div class="container">
+                  <div id="recipe-details" class="recipe-details">
+                        <h1>Cookies</h1>
+                        <div class="recipe-details_header">
+                              <div class="recipe-details_image">
+                                    <img src="https://www.confeiteiradesucesso.com/wp-content/uploads/2022/02/cookiecomnozes.jpg"
+                                          alt="">
+                              </div>
+                              <div>
+                                    <p>
+                                          Transforme seus momentos com nosso cookie recheado com nozes. Crocante por
+                                          fora,
+                                          macio por dentro, com pedaços generosos de nozes.
+                                    </p>
+                                    <ul>
+                                          <li>Teste</li>
+                                    </ul>
+                              </div>
+                        </div>
+
+                  </div>
+
+                  <script>
+                        // Função para obter parâmetros da URL
+                        function obterParametroUrl(nome) {
+                              nome = nome.replace(/[\[\]]/g, '\\$&');
+                              const regex = new RegExp('[?&]' + nome + '(=([^&#]*)|&|#|$)');
+                              const resultados = regex.exec(window.location.href);
+                              if (!resultados) return null;
+                              if (!resultados[2]) return '';
+                              return decodeURIComponent(resultados[2].replace(/\+/g, ' '));
+                        }
+
+                        const slug = obterParametroUrl('slug');
+
+                        // Encontrar a receita correspondente com base no slug
+                        const receita = recipes.find(receita => receita.slug === slug);
+
+                        // Verificar se a receita foi encontrada
+                        if (receita) {
+                              // Exibir detalhes da receita na página
+                              const recipeDetails = document.getElementById('recipe-details');
+                              // recipeDetails.innerHTML = `
+                              //                               <h2>${receita.titulo}</h2>
+                              //                               <div class="recipe-details-header"> 
+                              //                                     <div class="recipe-details-image"> 
+
+                              //                                     </div>
+                              //                                     <p>${receita.descricao}</p>
+                              //                               </div>
+                              //                               <h3>Ingredientes:</h3>
+                              //                               <ul>
+                              //                                     ${receita.ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).join('')}
+                              //                               </ul>
+                              //                               <h3>Instruções:</h3>
+                              //                               <p>${receita.instrucoes}</p>
+                              //                         `;
+                        } else {
+                              // Caso a receita não seja encontrada
+                              const reicpeDetails = document.getElementById('recipe-details');
+                              reicpeDetails.innerHTML = '<p>Receita não encontrada.</p>';
+                        }
+                  </script>
+            </div>
+      </main>
+</body>
+
+</html>
